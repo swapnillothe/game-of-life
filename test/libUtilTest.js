@@ -1,7 +1,9 @@
 const { 
   getAdjacentNumbers,
   increment,
-  createNumberSeries
+  createNumberSeries,
+  cycleGenerator,
+  getNeighbour
 } = require('../src/libUtil.js');
 
 const { deepEqual } = require('assert');
@@ -38,3 +40,24 @@ describe("createNumberSeries",function() {
     deepEqual( createNumberSeries( 3 ),  [ 0, 1, 2 ] );
   });
 });
+
+describe("cycleGenerator",function() {
+  let cycleOne = cycleGenerator([1,2,3],1)
+  it("should works for one time",function() {
+    deepEqual( cycleOne(), 1 );
+    deepEqual( cycleOne(), 2 );
+    deepEqual( cycleOne(), 3 );
+    deepEqual( cycleOne(), 1 );
+  });
+  let cycleMoreThanOne = cycleGenerator([1,2,3],2)
+  it("should works for more than one times",function() {
+    deepEqual( cycleMoreThanOne(), 1 );
+    deepEqual( cycleMoreThanOne(), 1 );
+    deepEqual( cycleMoreThanOne(), 2 );
+    deepEqual( cycleMoreThanOne(), 2 );
+    deepEqual( cycleMoreThanOne(), 3 );
+    deepEqual( cycleMoreThanOne(), 3 );
+  });
+});
+
+
