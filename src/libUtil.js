@@ -27,6 +27,22 @@ const cycleGenerator = function(array,times){
   }
 }
 
+exports.cycleGenerator = cycleGenerator;
+
+const isBetween = function( number1, number2, number3 ){
+  return number1 <= number2 && number2 <= number3;
+}
+
+const neighbourValidChecker = function( bounds ){
+  return function( cell ){
+    let isValid = isBetween(bounds["topLeft"][0],cell[0],bounds["bottomRight"][0]);
+    return isValid && isBetween(bounds["topLeft"][1],cell[1],bounds["bottomRight"][1]);
+  }
+}
+
+exports.isBetween = isBetween;
+exports.neighbourValidChecker = neighbourValidChecker;
+
 const getNeighbour = function( position ){
   let neighbours = new Array(9).fill("").map(x=>[]);
   let adjcentNumbers = position.map(getAdjacentNumbers);
@@ -40,7 +56,6 @@ const getNeighbour = function( position ){
   return neighbours;
 }
 
-exports.cycleGenerator = cycleGenerator;
 exports.getNeighbour = getNeighbour;
 
 const rowGenerator = function( rowLength ){
