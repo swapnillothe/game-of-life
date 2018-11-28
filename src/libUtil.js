@@ -11,7 +11,7 @@ const increment = function( number=0 ){
 }
 
 const createNumberSeries = function(limit){
-  let series = new Array(limit).fill(1);
+  let series = new Array(limit).fill("");
   createSeries = increment();
   return series.map(createSeries);
 }
@@ -43,3 +43,28 @@ const getNeighbour = function( position ){
 
 exports.cycleGenerator = cycleGenerator;
 exports.getNeighbour = getNeighbour;
+
+const make2dArray = function(length){
+  return new Array(length).fill("").map(x=>[]);
+}
+
+exports.make2dArray = make2dArray;
+
+const rowGenerator = function( rowLength ){
+  return function( rowNumber ){
+    let row = make2dArray( rowLength );
+    row = row.map(function(x){x.push(0);return x});
+    return row;
+  }
+}
+
+exports.rowGenerator = rowGenerator;
+
+const createGrid = function( row, column ){
+  let createRow = rowGenerator( column );
+  let grid = createNumberSeries( row );
+  return grid.map(createRow);
+}
+
+exports.createGrid = createGrid;
+
