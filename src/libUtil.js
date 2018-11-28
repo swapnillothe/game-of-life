@@ -33,7 +33,7 @@ const isBetween = function( number1, number2, number3 ){
   return number1 <= number2 && number2 <= number3;
 }
 
-const neighbourValidChecker = function( bounds ){
+const neighbourValidator = function( bounds ){
   return function( cell ){
     let isValid = isBetween(bounds["topLeft"][0],cell[0],bounds["bottomRight"][0]);
     return isValid && isBetween(bounds["topLeft"][1],cell[1],bounds["bottomRight"][1]);
@@ -41,7 +41,7 @@ const neighbourValidChecker = function( bounds ){
 }
 
 exports.isBetween = isBetween;
-exports.neighbourValidChecker = neighbourValidChecker;
+exports.neighbourValidator = neighbourValidator;
 
 const getAllNeighbour = function( position ){
   let neighbours = new Array(9).fill("").map(x=>[]);
@@ -57,6 +57,14 @@ const getAllNeighbour = function( position ){
 }
 
 exports.getAllNeighbour = getAllNeighbour;
+
+const getValidNeighbour = function( position, bounds ){
+  let isValid = neighbourValidator( bounds );
+  let neighbours = getAllNeighbour( position ).filter( isValid );
+  return neighbours;
+}
+
+exports.getValidNeighbour = getValidNeighbour;
 
 const rowGenerator = function( rowLength ){
   return function( rowNumber ){
@@ -74,4 +82,3 @@ const createGrid = function( row, column ){
 }
 
 exports.createGrid = createGrid;
-
