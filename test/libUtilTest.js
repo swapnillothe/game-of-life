@@ -4,7 +4,6 @@ const {
   createNumberSeries,
   cycleGenerator,
   getNeighbour,
-  make2dArray,
   rowGenerator,
   createGrid
 } = require('../src/libUtil.js');
@@ -69,18 +68,6 @@ describe("getNeighbour",function() {
   });
 });
 
-describe("make2dArray",function() {
-  it("should works for no length",function() {
-    deepEqual( make2dArray(0), [] );
-  });
-  it("should works for one length of array",function() {
-    deepEqual( make2dArray(1), [ [ ] ] );
-  });
-  it("should works for multiple length of array",function() {
-    deepEqual( make2dArray(2), [ [ ], [ ] ] );
-  });
-});
-
 describe("rowGenerator",function() {
   let createRowForZeroLength = rowGenerator( 0 );
   it("should return row of zero length ",function() {
@@ -88,17 +75,17 @@ describe("rowGenerator",function() {
   });
   let createRow = rowGenerator( 2 );
   it("should return positive integer length ",function() {
-    deepEqual( createRow( 0 ), [ [ 0 ], [ 0 ] ] );
+    deepEqual( createRow( 0 ), [ 0, 0 ] );
   });
 });
 
 describe("createGrid",function() {
   it("should return for all positive same row and column length",function() {
-    deepEqual( createGrid( 1, 1 ),[ [ [ 0 ] ] ] );
-    deepEqual( createGrid( 2, 2 ), [ [ [ 0 ], [ 0 ] ], [ [ 0 ], [ 0 ] ] ] );
+    deepEqual( createGrid( 1, 1 ),[ [ 0 ] ] );
+    deepEqual( createGrid( 2, 2 ), [ [ 0, 0 ], [ 0, 0 ] ] );
   });
   it("should return for all positive different row and column length",function() {
-    deepEqual( createGrid( 1, 2 ), [ [ [ 0 ], [ 0 ] ] ] );
-    deepEqual( createGrid( 2, 3 ), [ [ [ 0 ], [ 0 ], [ 0 ] ], [ [ 0 ], [ 0 ], [ 0 ] ] ] );
+    deepEqual( createGrid( 1, 2 ), [ [ 0, 0 ] ] );
+    deepEqual( createGrid( 2, 3 ), [ [ 0, 0, 0 ], [ 0, 0, 0 ] ] );
   });
 });

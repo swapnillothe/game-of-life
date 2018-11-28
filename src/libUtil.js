@@ -44,16 +44,9 @@ const getNeighbour = function( position ){
 exports.cycleGenerator = cycleGenerator;
 exports.getNeighbour = getNeighbour;
 
-const make2dArray = function(length){
-  return new Array(length).fill("").map(x=>[]);
-}
-
-exports.make2dArray = make2dArray;
-
 const rowGenerator = function( rowLength ){
   return function( rowNumber ){
-    let row = make2dArray( rowLength );
-    row = row.map(function(x){x.push(0);return x});
+    let row = new Array( rowLength ).fill(0);
     return row;
   }
 }
