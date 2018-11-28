@@ -27,7 +27,7 @@ const cycleGenerator = function(array,times){
   }
 }
 
-const getNeighbour = function( positioin ){
+const getNeighbour = function( position ){
   let temp1 = getAdjacentNumbers(position[0]);
   let temp2 = getAdjacentNumbers(position[1]);
   let neighbours = new Array(9).fill("").map(x=>[]);
