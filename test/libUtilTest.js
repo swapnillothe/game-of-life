@@ -3,7 +3,7 @@ const {
   increment,
   createNumberSeries,
   cycleGenerator,
-  getNeighbour,
+  getAllNeighbour,
   rowGenerator,
   createGrid,
   isBetween,
@@ -64,9 +64,9 @@ describe("cycleGenerator",function() {
   });
 });
 
-describe("getNeighbour",function() {
+describe("getAllNeighbour",function() {
   it("should returns position of all 8 neighbours",function() {
-    deepEqual( getNeighbour([ 2, 3 ] ), [ [ 1, 2 ], [ 1, 3 ],[ 1, 4 ], [ 2, 2 ], [ 2, 4 ], [ 3, 2 ], [ 3, 3 ], [ 3, 4 ] ] );
+    deepEqual( getAllNeighbour([ 2, 3 ] ), [ [ 1, 2 ], [ 1, 3 ],[ 1, 4 ], [ 2, 2 ], [ 2, 4 ], [ 3, 2 ], [ 3, 3 ], [ 3, 4 ] ] );
   });
 });
 

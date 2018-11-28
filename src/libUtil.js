@@ -43,7 +43,7 @@ const neighbourValidChecker = function( bounds ){
 exports.isBetween = isBetween;
 exports.neighbourValidChecker = neighbourValidChecker;
 
-const getNeighbour = function( position ){
+const getAllNeighbour = function( position ){
   let neighbours = new Array(9).fill("").map(x=>[]);
   let adjcentNumbers = position.map(getAdjacentNumbers);
 
@@ -56,7 +56,7 @@ const getNeighbour = function( position ){
   return neighbours;
 }
 
-exports.getNeighbour = getNeighbour;
+exports.getAllNeighbour = getAllNeighbour;
 
 const rowGenerator = function( rowLength ){
   return function( rowNumber ){
