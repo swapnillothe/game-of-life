@@ -28,13 +28,12 @@ const cycleGenerator = function(array,times){
 }
 
 const getNeighbour = function( position ){
-  let temp1 = getAdjacentNumbers(position[0]);
-  let temp2 = getAdjacentNumbers(position[1]);
   let neighbours = new Array(9).fill("").map(x=>[]);
+  let adjcentNumbers = position.map(getAdjacentNumbers);
 
-  let cycle = cycleGenerator(temp1,3);
+  let cycle = cycleGenerator(adjcentNumbers[0],3);
   neighbours = neighbours.map(function(x) {x.push(cycle()); return x;});
-  cycle = cycleGenerator(temp2,1);
+  cycle = cycleGenerator(adjcentNumbers[1],1);
   neighbours = neighbours.map(function(x) {x.push(cycle()); return x;});
   neighbours.splice(4,1);
 
