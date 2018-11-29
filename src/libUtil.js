@@ -10,9 +10,9 @@ const increment = function( number=0 ){
   }
 }
 
-const createNumberSeries = function(limit){
+const createNumberSeries = function(limit, startingNumber=0){
   let series = new Array(limit).fill("");
-  createSeries = increment();
+  createSeries = increment( startingNumber );
   return series.map(createSeries);
 }
 

@@ -42,6 +42,9 @@ describe("createNumberSeries",function() {
   it("should work with nonzero length",function() {
     deepEqual( createNumberSeries( 3 ),  [ 0, 1, 2 ] );
   });
+  it("should work with nonzero length with intial value",function() {
+    deepEqual( createNumberSeries( 3, 1 ),  [ 1, 2, 3 ] );
+  });
 });
 
 describe("cycleGenerator",function() {
