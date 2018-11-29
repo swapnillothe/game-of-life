@@ -2,7 +2,8 @@ const {
   isBetween,
   getAdjacentNumbers,
   cycleGenerator,
-  contains
+  contains,
+  createNumberSeries
 } = require('../src/libUtil.js');
 
 const neighbourValidator = function( bounds ){
@@ -47,3 +48,19 @@ const willAlive = function( previousState, bounds, cell ){
 }
 
 exports.willAlive = willAlive;
+
+
+const getWorld = function( ...size ){
+  let cordinates = [];
+  let noOfCells = (size[1][0]-size[0][0]+1)*(size[1][1]-size[0][1]+1);
+  cordinates[0] = createNumberSeries((size[1][0]-size[0][0]+1),size[0][0]);
+  cordinates[1] = createNumberSeries((size[1][1]-size[0][1]+1),size[0][1]);
+  let world = new Array(noOfCells).fill("").map(x=>[]);
+  let cycle1 = cycleGenerator(cordinates[0],cordinates[1].length);
+  world = world.map(x=>{x.push(cycle1());return x});
+  let cycle2 = cycleGenerator(cordinates[1],1);
+  world = world.map(x=>{x.push(cycle2());return x});
+  return world;
+}
+
+exports.getWorld = getWorld;

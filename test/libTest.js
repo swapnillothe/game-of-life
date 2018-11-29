@@ -2,7 +2,8 @@ const {
   getAllNeighbour,
   neighbourValidator,
   getValidNeighbour,
-  willAlive
+  willAlive,
+  getWorld
 } = require('../src/lib.js');
 
 const { deepEqual } = require('assert');
@@ -54,5 +55,20 @@ describe("willAlive",function() {
     deepEqual( willAlive(currentGeneration2, bounds2, [ 1, 0 ]), false );
     deepEqual( willAlive(currentGeneration2, bounds2, [ 1, 1 ]), false );
     deepEqual( willAlive(currentGeneration2, bounds2, [ 2, 0 ]), false );
+  });
+});
+
+describe("getWorld",function() {
+  it("should works for start with [0,0] and square shape",function() {
+    deepEqual( getWorld( [0,0],[1,1]),[[0,0],[0,1],[1,0],[1,1]]);
+  });
+  it("should works for start with other than [0,0] and square shape",function() {
+    deepEqual( getWorld( [1,1],[2,2]),[[1,1],[1,2],[2,1],[2,2]]);
+  });
+  it("should works for start with [0,0] and rectangle shape",function() {
+    deepEqual( getWorld( [0,0],[1,2]),[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]]);
+  });
+  it("should works for start with other than [0,0] and rectangle shape",function() {
+    deepEqual( getWorld( [1,1],[2,3]),[[1,1],[1,2],[1,3],[2,1],[2,2],[2,3]]);
   });
 });

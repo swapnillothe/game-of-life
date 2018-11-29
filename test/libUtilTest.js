@@ -105,3 +105,4 @@ describe("contains",function() {
     deepEqual( contains( [ [ 1, 2 ], [ 2, 3 ] ], [ 3, 3 ] ), false );
   });
 });
+
