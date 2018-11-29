@@ -6,6 +6,7 @@ const {
   rowGenerator,
   createGrid,
   isBetween,
+  contains
 } = require('../src/libUtil.js');
 
 const { deepEqual } = require('assert');
@@ -95,3 +96,9 @@ describe("isBetween",function() {
   });
 });
 
+describe("contains",function() {
+  it("should work",function() {
+    deepEqual( contains( [ [ 1, 2 ], [ 2, 3 ] ], [ 2, 3 ] ), true );
+    deepEqual( contains( [ [ 1, 2 ], [ 2, 3 ] ], [ 3, 3 ] ), false );
+  });
+});

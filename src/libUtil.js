@@ -51,3 +51,9 @@ const createGrid = function( row, column ){
 }
 
 exports.createGrid = createGrid;
+
+const contains = function( list, element ){
+  return list.some(e=>e[0]===element[0] && e[1]===element[1]);
+}
+
+exports.contains = contains;

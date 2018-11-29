@@ -27,12 +27,12 @@ describe("neighbourValidator",function() {
 
 describe("getValidNeighbour",function() {
   it("should work for left corner cell",function() {
-    deepEqual( getValidNeighbour([ 0, 0 ],{ topLeft : [ 0, 0 ], bottomRight : [ 3, 3 ] }),[[0,1],[1,0],[1,1]]);
+    deepEqual( getValidNeighbour({ topLeft : [ 0, 0 ], bottomRight : [ 3, 3 ] },[ 0, 0 ]),[[0,1],[1,0],[1,1]]);
   });
   it("should work for right corner cell",function() {
-    deepEqual( getValidNeighbour([ 0, 3 ],{ topLeft : [ 0, 0 ], bottomRight : [ 3, 3 ] }),[[0,2],[1,2],[1,3]]);
+    deepEqual( getValidNeighbour({ topLeft : [ 0, 0 ], bottomRight : [ 3, 3 ] },[ 0, 3 ]),[[0,2],[1,2],[1,3]]);
   });
   it("should work for center corner cell",function() {
-    deepEqual( getValidNeighbour([ 2, 2 ],{ topLeft : [ 1, 1 ], bottomRight : [ 3, 3 ] }),[[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]]);
+    deepEqual( getValidNeighbour({ topLeft : [ 1, 1 ], bottomRight : [ 3, 3 ] },[ 2, 2 ]),[[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]]);
   });
 });

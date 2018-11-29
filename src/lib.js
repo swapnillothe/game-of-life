@@ -2,7 +2,7 @@ const {
   isBetween,
   getAdjacentNumbers,
   cycleGenerator
- } = require('../src/libUtil.js');
+} = require('../src/libUtil.js');
 
 const neighbourValidator = function( bounds ){
   return function( cell ){
@@ -28,7 +28,7 @@ const getAllNeighbour = function( position ){
 
 exports.getAllNeighbour = getAllNeighbour;
 
-const getValidNeighbour = function( position, bounds ){
+const getValidNeighbour = function(  bounds, position ){
   let isValid = neighbourValidator( bounds );
   let neighbours = getAllNeighbour( position ).filter( isValid );
   return neighbours;
