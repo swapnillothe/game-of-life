@@ -1,7 +1,8 @@
 const {
   getAllNeighbour,
   neighbourValidator,
-  getValidNeighbour
+  getValidNeighbour,
+  willAlive
 } = require('../src/lib.js');
 
 const { deepEqual } = require('assert');
@@ -34,5 +35,24 @@ describe("getValidNeighbour",function() {
   });
   it("should work for center corner cell",function() {
     deepEqual( getValidNeighbour({ topLeft : [ 1, 1 ], bottomRight : [ 3, 3 ] },[ 2, 2 ]),[[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]]);
+  });
+});
+
+describe("willAlive",function() {
+  let currentGeneration1 = [[0,1],[1,1],[2,1]];
+  let bounds1 = {topLeft: [0,0], bottomRight: [3,3]};
+
+  it("should work for [0,0] topLeft",function() {
+    deepEqual( willAlive(currentGeneration1, bounds1, [ 1, 0 ]), true );
+    deepEqual( willAlive(currentGeneration1, bounds1, [ 1, 1 ]), true );
+    deepEqual( willAlive(currentGeneration1, bounds1, [ 2, 0 ]), false );
+  });
+
+  let currentGeneration2 = [[0,1],[1,1],[2,1]];
+  let bounds2 = {topLeft: [1,1], bottomRight: [3,3]};
+  it("should work for other than [0,0] topLeft",function() {
+    deepEqual( willAlive(currentGeneration2, bounds2, [ 1, 0 ]), false );
+    deepEqual( willAlive(currentGeneration2, bounds2, [ 1, 1 ]), false );
+    deepEqual( willAlive(currentGeneration2, bounds2, [ 2, 0 ]), false );
   });
 });

@@ -1,7 +1,8 @@
 const {
   isBetween,
   getAdjacentNumbers,
-  cycleGenerator
+  cycleGenerator,
+  contains
 } = require('../src/libUtil.js');
 
 const neighbourValidator = function( bounds ){
@@ -36,3 +37,13 @@ const getValidNeighbour = function(  bounds, position ){
 
 exports.getValidNeighbour = getValidNeighbour;
 
+const willAlive = function( previousState, bounds, cell ){
+  let isAlive = contains.bind( null, previousState );
+  let getValidNeighbours = getValidNeighbour.bind( null, bounds );
+  let aliveConditions = { 3 : true, 2 : isAlive( cell ), undefined : false };
+  let aliveSubConditions = { 3 : 3, 2 : 2 };
+  aliveNeighboursNo = getValidNeighbours( cell ).filter( isAlive ).length;
+  return aliveConditions[ aliveSubConditions[ aliveNeighboursNo ] ];
+}
+
+exports.willAlive = willAlive;
